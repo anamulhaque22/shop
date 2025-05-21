@@ -1,0 +1,260 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .section-space {
+    @apply pt-20;
+  }
+  .custom-divider {
+    @apply divider before:h-[1px] after:h-[1px] before:bg-[#EDEEF2] after:bg-[#EDEEF2];
+  }
+
+  .custom-shadow {
+    @apply shadow-[0_0_2px_rgba(145,158,171,0.2),0_5px_20px_rgb(229,234,241)];
+  }
+}
+@layer components {
+  .t-btn {
+    @apply bg-transparent text-white px-7 py-3 rounded-md font-causten-semi-bold border text-xs;
+  }
+
+  .btn {
+    @apply bg-[#8A33FD] hover:bg-[#6620C1] text-[1.125rem] text-white px-7 py-3 rounded-md font-causten-medium;
+  }
+}
+
+/* utility classes */
+/* .custom-shadow {
+  box-shadow:
+    rgba(145, 158, 171, 0.2) 0px 0px 2px,
+    rgb(229, 234, 241) 0px 5px 20px;
+} */
+
+/*home hero slider  */
+.home-banner .slick-slider .slick-prev {
+  left: 0px;
+  z-index: 1;
+  fill: white;
+}
+.home-banner .slick-slider .slick-prev::before {
+  content: url("/images/icon/carousel-control-prev.png");
+  background: transparent;
+  width: 24px;
+  height: 44px;
+  color: white;
+  margin-left: 10px;
+}
+.home-banner .slick-slider .slick-next::before {
+  content: url("/images/icon/carousel-control-next.png");
+  background: transparent;
+  width: 24px;
+  height: 44px;
+  margin-right: 10px;
+}
+.home-banner .slick-slider .slick-next {
+  right: 0px;
+  z-index: 1;
+}
+.home-banner .slick-slider .slick-dots {
+  bottom: 30px;
+}
+.home-banner .slick-slider .slick-dots li:first-child button::before,
+.home-banner .slick-slider .slick-dots li:first-child {
+  border-radius: 30px 0px 0px 30px;
+}
+.home-banner .slick-slider .slick-dots li:last-child button::before,
+.home-banner .slick-slider .slick-dots li:last-child {
+  border-radius: 0px 30px 30px 0px;
+}
+.home-banner .slick-slider .slick-dots li button,
+.home-banner .slick-slider .slick-dots li {
+  width: 55px;
+  height: 7px;
+}
+.home-banner .slick-slider .slick-dots li button::before {
+  content: "";
+  font-size: 0px;
+  width: 55px;
+  height: 7px;
+  background: rgb(255, 255, 255);
+  opacity: 0.4;
+  margin-right: 1px;
+  margin-left: 0px;
+}
+.home-banner .slick-slider .slick-dots li.slick-active {
+  background-color: white;
+  opacity: 1;
+}
+
+.lenier-bg-1 {
+  background-image: linear-gradient(
+    to right top,
+    #feb83f,
+    #feb83f,
+    #feb83f,
+    #feb83f,
+    #feb83f
+  );
+}
+.lenier-bg-2 {
+  background-image: linear-gradient(
+    to left,
+    #72548a,
+    #72548a,
+    #72548a,
+    #72548a,
+    #72548a
+  );
+}
+
+/* new arrival css  */
+/* .new-arrival .slick-slide {
+  margin: 0 10px;
+}
+.new-arrival .slick-list {
+  margin: 0 -10px;
+} */
+.new-arrival .slick-slider {
+  margin-inline: -20px;
+}
+
+.new-arrival .slick-slide {
+  > div {
+    margin-inline: 10px;
+  }
+}
+.new-arrival .slick-slider .slick-prev {
+  left: 0px;
+  z-index: 1;
+  fill: white;
+}
+.new-arrival .slick-slider .slick-prev::before {
+  content: url("/images/icon/arrow/left.svg");
+  background: transparent;
+  width: 24px;
+  height: 44px;
+  color: white;
+  /* margin-left: 10px; */
+}
+.new-arrival .slick-slider .slick-next::before {
+  content: url("/images/icon/arrow/right.svg");
+  background: transparent;
+  width: 24px;
+  height: 44px;
+  margin-right: 10px;
+}
+.new-arrival .slick-slider .slick-next {
+  right: 0px;
+  z-index: 1;
+}
+
+/* price range slide css  */
+.example-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #8a33fd;
+}
+.example-track-0,
+.example-track-2 {
+  top: 6.5px;
+  height: 3px;
+  background-color: #807d7e;
+}
+.example-track-1 {
+  top: 6.5px;
+  height: 3px;
+  background-color: #8a33fd;
+}
+
+/* user feedback slider css  */
+.user-feedback .slick-list {
+  margin: 0 -7px !important;
+}
+
+.user-feedback .slick-slide > div {
+  padding: 0 7px !important;
+}
+/*price range slide css end  */
+
+/* increase decrease button css  */
+
+.increase-decrease-btn input[type="number"]::-webkit-inner-spin-button,
+.increase-decrease-btn input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* user account left menu css  */
+.user-account .menu .a:hover {
+  background-color: #f6f6f6;
+}
+
+.user-account.menu li > a:active {
+  background-color: #f6f6f6 !important;
+  color: #807d7e !important;
+}
+.user-account.menu li > a:focus {
+  background-color: #f6f6f6;
+  color: #807d7e;
+}
+
+/* login */
+.bg-image {
+  background-image: url("/images/sign-up-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cross::before,
+.cross::after {
+  content: "";
+  position: absolute;
+  left: 50%; /* Center align lines horizontally */
+  width: 1.5px; /* Thickness of the lines */
+  height: 80%; /* Height of the lines, filling the container */
+  background-color: #575757; /* Color of the cross lines */
+  transform-origin: center;
+}
+.cross::before {
+  transform: rotate(45deg);
+}
+.cross::after {
+  transform: rotate(-45deg);
+}
+
+.order-search.input:focus,
+.order-search.input:focus-within,
+.order-search.input input:focus {
+  outline: none !important;
+}
+
+/* .mobile-icon
+  .menu
+  :where(li:not(.menu-title) > *:not(ul, details, .menu-title, .btn)),
+.menu :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+  padding: 0;
+}
+
+.mobile-icon
+  .menu
+  :where(li:not(.menu-title) > *:not(ul, details, .menu-title, .btn)),
+.menu :where(li:not(.menu-title) > details > summary:not(.menu-title)) {
+  padding: 0 !important;
+} */
+
+.mobile-icon li {
+  padding: 0 !important;
+}
+.mobile-icon li {
+  padding: 0 !important;
+}
+ul.menu.menu-horizontal.rounded-box.mobile-icon {
+  margin-inline-start: 0;
+  padding-inline-start: 0;
+}
+ul.menu.menu-horizontal.rounded-box.mobile-icon::before {
+  display: none;
+}

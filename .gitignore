@@ -1,0 +1,10 @@
+node_modules/
+customer-client/node_modules/
+customer-client/.env
+admin-client/node_modules/
+admin-client/.env
+server/node_modules/
+server/.env
+server/dist/
+server/build/
+server/.github/*
