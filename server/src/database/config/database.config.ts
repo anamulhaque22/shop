@@ -59,6 +59,10 @@ class EnvironmentVariablesValidator {
   @IsString()
   @IsOptional()
   DATABASE_CERT: string;
+
+  @IsString()
+  @IsOptional()
+  DATABASE_URL: string;
 }
 
 export default registerAs<DatabaseConfig>('database', () => {
@@ -83,5 +87,6 @@ export default registerAs<DatabaseConfig>('database', () => {
     key: process.env.DATABASE_KEY,
     cert: process.env.DATABASE_CERT,
     sslMode: 'require',
+    url: process.env.DATABASE_URL,
   };
 });
