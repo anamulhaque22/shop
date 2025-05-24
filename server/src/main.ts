@@ -23,6 +23,8 @@ async function bootstrap() {
       configService.getOrThrow('app.frontendCustomerDomain', { infer: true }),
       'https://www.zenthio.shop',
       'https://www.admin.zenthio.shop',
+      'http://localhost:3000',
+      'http://localhost:3001',
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     credentials: true,

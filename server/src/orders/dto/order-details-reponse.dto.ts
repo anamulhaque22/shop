@@ -10,6 +10,7 @@ export class OrderItemsResponseDto extends PickType(OrderItem, [
   'size',
   'colorCode',
 ] as const) {
+  discount?: number;
   product: Pick<Product, 'id' | 'images' | 'title' | 'description'>;
 }
 

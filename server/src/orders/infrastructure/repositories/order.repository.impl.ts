@@ -177,6 +177,7 @@ export class OrderRepositoryImpl implements OrderRepository {
             color: oi.color,
             colorCode: oi.colorCode,
             price: oi.price,
+            discount: oi?.product?.discount,
             quantity: oi.quantity,
             size: oi.size,
             product: {

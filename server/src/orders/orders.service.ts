@@ -187,7 +187,14 @@ export class OrdersService {
     let totalAmount = 0;
     orderItems.forEach((item) => {
       const product = products.find((p) => p.id === item.productId);
-      totalAmount += product.sellPrice * item.quantity;
+      let price = product.sellPrice;
+
+      // Check if a discount exists and apply it
+      if (product.discount && product.discount > 0) {
+        price = price - (price * product.discount) / 100; // Apply percentage discount
+      }
+
+      totalAmount += price * item.quantity;
     });
 
     return totalAmount;
