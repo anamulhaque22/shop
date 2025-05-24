@@ -5,10 +5,12 @@ export default function OrderdProducts({
   orderStatus,
   shippingCost,
 }) {
-  const subtotal = orderItems.reduce(
-    (acc, item) => acc + item?.price * item?.quantity,
-    0
-  );
+  const subtotal = orderItems.reduce((acc, item) => {
+    const discountedPrice =
+      Number(item?.price) -
+      (Number(item?.price) * Number(item?.discount)) / 100;
+    return acc + discountedPrice * item?.quantity;
+  }, 0);
   return (
     <div className="overflow-x-auto w-full text-text bg-content-bg rounded-xl border border-bc p-4">
       <table className="table w-full ">
@@ -45,9 +47,18 @@ export default function OrderdProducts({
                   </div>
                 </div>
               </td>
-              <td>{item?.price} TK</td>
+              <td>
+                {Number(item?.price) -
+                  (Number(item?.price) * Number(item?.discount)) / 100}{" "}
+                TK
+              </td>
               <td>{item?.quantity}</td>
-              <td className="text-right">${item?.price * item?.quantity}</td>
+              <td className="text-right">
+                {(Number(item?.price) -
+                  (Number(item?.price) * Number(item?.discount)) / 100) *
+                  item?.quantity}{" "}
+                TK
+              </td>
             </tr>
           ))}
         </tbody>
@@ -61,14 +72,14 @@ export default function OrderdProducts({
           </div>
           <div className="flex flex-row justify-between">
             <p>Shippint Cost:</p>
-            <p>{shippingCost}TK</p>
+            <p>{shippingCost} TK</p>
           </div>
 
           <div className="flex flex-row justify-between items-center">
             <p>Grand total</p>
 
             <p className="text-xl">
-              <b>${+subtotal + +shippingCost}</b>
+              <b>{+subtotal + +shippingCost} TK</b>
             </p>
           </div>
           <div className="flex flex-row justify-between">
