@@ -77,7 +77,7 @@ const Checkout = () => {
       billingAddress: {
         ...billingAddressData,
       },
-      shippingAmount: billingAddressData.city === "Dhaka" ? 60 : 100,
+      shippingAmount: billingAddressData.city === "Dhaka" ? 0 : 60,
 
       orderItems: cart.map((item) => ({
         productId: item.productId,

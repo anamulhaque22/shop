@@ -64,12 +64,19 @@ const ProductsDetails = ({ product }) => {
         color,
         image:
           product?.images?.[0]?.imageUrl || "/images/product-placeholder.jpg",
-        price: product?.sellPrice,
+        sellPrice: product?.sellPrice,
+        discount: product?.discount,
       });
       setSize(null);
       setColor(null);
     }
   };
+
+  // Calculate discounted price
+  const discount = parseFloat(product?.discount || 0);
+  const sellPrice = parseFloat(product?.sellPrice || 0);
+  const discountedPrice =
+    discount > 0 ? sellPrice - (sellPrice * discount) / 100 : sellPrice;
 
   return (
     <div className="container mb-7">
@@ -184,7 +191,7 @@ const ProductsDetails = ({ product }) => {
             isColorExistOfSize={isColorExistOfSize}
           />
           {/* color end  */}
-          <div className="flex gap-6">
+          <div className="flex gap-6 items-center">
             <button
               onClick={handleAddToCart}
               className="font-causten-semi-bold text-[1.125rem] text-white bg-primary flex items-center gap-2 py-3 px-5 lg:px-10 rounded-lg disabled:bg-primary"
@@ -200,11 +207,22 @@ const ProductsDetails = ({ product }) => {
                 Add to Cart
               </span>
             </button>
-            <button className="font-causten-semi-bold text-[1.125rem] text-white bg-white border border-[#3C4242] flex items-center gap-2 py-3 px-5 lg:px-10 rounded-lg">
-              <span className="font-causten-semi-bold text-[1.125rem] text-[#3C4242]">
-                TK {product?.sellPrice}
-              </span>
-            </button>
+            <div className="flex flex-col">
+              {discount > 0 ? (
+                <div className="flex items-center space-x-2">
+                  <p className="font-causten-bold text-sm text-red-500 line-through">
+                    {sellPrice.toFixed(2)} TK
+                  </p>
+                  <p className="font-causten-bold text-sm text-green-500">
+                    {discountedPrice.toFixed(2)} TK
+                  </p>
+                </div>
+              ) : (
+                <p className="font-causten-bold text-sm text-[#3C4242]">
+                  {sellPrice.toFixed(2)} TK
+                </p>
+              )}
+            </div>
           </div>
 
           <div className="hidden divider"></div>

@@ -1,4 +1,3 @@
-import EverydayFashion from "@/components/Home/EverydayFashion";
 import Hero from "@/components/Home/Hero";
 import NewArrival from "@/components/Home/NewArrival";
 import MainNav from "@/components/Navbar/MainNav";
@@ -19,7 +18,7 @@ export default function Home() {
       {/* <SpecialDiscount /> */}
       <NewArrival />
       {/* <BigSavingZone /> */}
-      <EverydayFashion />
+      {/* <EverydayFashion /> */}
       {/* <Cagegories cagegoryFor={"Cagegory For Man"} /> */}
       {/* <TopBrands /> */}
       {/* <Limelight /> */}

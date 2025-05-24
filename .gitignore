@@ -8,3 +8,4 @@ server/.env
 server/dist/
 server/build/
 server/.github/*
+server/ca-certificate.pem

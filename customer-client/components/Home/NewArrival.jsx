@@ -12,10 +12,10 @@ const NewArrival = () => {
 
   const fetchProducts = useGetProductsService();
   const settings = {
-    infinite: true,
+    infinite: products?.length > true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     centerMode: true,
     responsive: [
       {
@@ -23,7 +23,7 @@ const NewArrival = () => {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          infinite: true,
+          infinite: products.length > 3,
         },
       },
       {
@@ -31,7 +31,7 @@ const NewArrival = () => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2,
+          infinite: products.length > 2,
         },
       },
       {
@@ -39,6 +39,7 @@ const NewArrival = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          infinite: products.length > 1,
         },
       },
     ],
@@ -58,7 +59,7 @@ const NewArrival = () => {
     fetchData();
   }, [fetchProducts]);
   return (
-    <div className="container section-space">
+    <div className="container section-space mb-12">
       <SectionHeading text={"New Arrival"} />
       <div className="new-arrival mt-8 sm:mt-12 slider-container">
         <Slider {...settings}>
@@ -74,14 +75,13 @@ const NewArrival = () => {
                 alt="New Arrival"
                 className="object-fill w-64 h-64"
               />
-              <div className="w-56">
-                <Link
-                  href={`products/details/${product.id}`}
-                  className="font-causten-bold text-xl mt-6 truncate "
-                >
-                  {product.title}
-                </Link>
-              </div>
+
+              <Link
+                href={`products/details/${product.id}`}
+                className="font-causten-bold text-lg mt-2 block"
+              >
+                {product.title}
+              </Link>
             </div>
           ))}
         </Slider>

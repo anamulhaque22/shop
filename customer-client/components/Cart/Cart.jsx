@@ -263,9 +263,7 @@ const Cart = () => {
               <p className="font-causten-medium text-[1.375rem] flex justify-between gap-5">
                 <span>Sub Total</span> <span>${totalAmount.toFixed(2)}</span>
               </p>
-              <p className="font-causten-medium text-[1.375rem] flex justify-between gap-5">
-                <span>Shipping</span> <span>Free</span>
-              </p>
+
               <p className="font-causten-bold text-[1.375rem] flex justify-between gap-5">
                 <span>Grand Total</span> <span>${totalAmount.toFixed(2)}</span>
               </p>

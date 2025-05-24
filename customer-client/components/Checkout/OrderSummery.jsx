@@ -8,11 +8,10 @@ export default function OrderSummery({ district }) {
     (acc, item) => acc + item.price * item.quantity,
     0
   );
-  console.log("district", district);
   const shippingCost = !!district
     ? district.toLowerCase() === "dhaka"
-      ? 60
-      : 100
+      ? 0
+      : 60
     : 0;
   return (
     <div className="w-full lg:w-[43%]">

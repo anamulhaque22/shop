@@ -53,14 +53,15 @@ const MainNav = () => {
               {/* logo */}
               <div className="">
                 <Link href="/">
-                  <Image
-                    src={"/images/logo.png"}
+                  {/* <Image
+                    src={"/images/zenthio.png"}
                     height={100}
                     width={100}
-                    alt="logo"
+                    alt="zenthio logo"
                     priority={true}
                     className="lg:w-auto lg:h-auto"
-                  />
+                  /> */}
+                  <span className="text-3xl font-bold">ZenThio</span>
                 </Link>
               </div>
 

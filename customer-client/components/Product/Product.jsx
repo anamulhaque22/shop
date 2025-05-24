@@ -18,6 +18,12 @@ const Product = ({ productCategory, product }) => {
     toggleWishlist(product);
   };
 
+  // Calculate discounted price
+  const discount = parseFloat(product?.discount || 0);
+  const sellPrice = parseFloat(product?.sellPrice || 0);
+  const discountedPrice =
+    discount > 0 ? sellPrice - (sellPrice * discount) / 100 : sellPrice;
+
   return (
     <div className="border  p-3 rounded-md">
       <div className="relative rounded-md">
@@ -48,22 +54,38 @@ const Product = ({ productCategory, product }) => {
           </button>
         </div> */}
       </div>
-      <div className="flex justify-between items-center mt-7">
-        <div className="overflow-hidden">
-          <Link
-            href={`/products/details/${product?.id}`}
-            className="truncate text-base font-causten-semi-bold text-secondary"
-          >
-            {product?.title}
-          </Link>
-          {/* <p className="text-sm font-causten-medium text-gray-500">
+      <div className="flex flex-col justify-between items-center mt-7 space-y-2">
+        <Link
+          href={`/products/details/${product?.id}`}
+          className="truncate text-base font-causten-semi-bold text-secondary"
+        >
+          {product?.title}
+        </Link>
+        {/* <p className="text-sm font-causten-medium text-gray-500">
             AS{"'"}s Brand
           </p> */}
-        </div>
-        <div>
+
+        {/* <div>
           <p className="font-causten-bold text-sm inline-block bg-off-white-light py-2 px-4 rounded-md">
             {product?.sellPrice} TK
           </p>
+        </div> */}
+
+        <div>
+          {discount > 0 ? (
+            <div className="flex items-center space-x-2">
+              <p className="font-causten-bold text-sm  rounded-md text-red-500 line-through">
+                {sellPrice.toFixed(2)} TK
+              </p>
+              <p className="font-causten-bold text-sm bg-off-white-light py-2 px-4 rounded-md text-green-500">
+                {discountedPrice.toFixed(2)} TK
+              </p>
+            </div>
+          ) : (
+            <p className="font-causten-bold text-sm bg-off-white-light py-2 px-4 rounded-md">
+              {sellPrice.toFixed(2)} TK
+            </p>
+          )}
         </div>
       </div>
     </div>

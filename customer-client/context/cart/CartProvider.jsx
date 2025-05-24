@@ -33,7 +33,19 @@ export const CartProvider = ({ children }) => {
         });
         return prev;
       } else {
-        setCartToLocalStorage([...prev, { ...product, quantity: 1 }]);
+        // Calculate discounted price
+        const discount = parseFloat(product?.discount || 0);
+        const sellPrice = parseFloat(product?.sellPrice || 0);
+        const discountedPrice =
+          discount > 0 ? sellPrice - (sellPrice * discount) / 100 : sellPrice;
+
+        const newProduct = {
+          ...product,
+          price: discountedPrice, // Store the discounted price
+          quantity: 1,
+        };
+
+        setCartToLocalStorage([...prev, newProduct]);
         enqueueSnackbar("Product is added to cart", {
           variant: "success",
           anchorOrigin: {
@@ -41,7 +53,7 @@ export const CartProvider = ({ children }) => {
             horizontal: "right",
           },
         });
-        return [...prev, { ...product, quantity: 1 }];
+        return [...prev, newProduct];
       }
     });
   };

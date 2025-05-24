@@ -3,6 +3,8 @@
 /node_modules
 /build
 
+./ca-cartificate.pem
+
 # Logs
 logs
 *.log

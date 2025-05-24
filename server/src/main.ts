@@ -21,9 +21,8 @@ async function bootstrap() {
   const corsOptions: CorsOptions = {
     origin: [
       configService.getOrThrow('app.frontendCustomerDomain', { infer: true }),
-      'http://localhost:3000',
-      'http://localhost:3001',
-      'https://clothing-shop-client.vercel.app',
+      'https://www.zenthio.shop',
+      'https://www.admin.zenthio.shop',
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     credentials: true,
