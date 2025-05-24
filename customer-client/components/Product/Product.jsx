@@ -57,7 +57,7 @@ const Product = ({ productCategory, product }) => {
       <div className="flex flex-col justify-between items-center mt-7 space-y-2">
         <Link
           href={`/products/details/${product?.id}`}
-          className="truncate text-base font-causten-semi-bold text-secondary"
+          className="text-base text-center font-causten-semi-bold text-secondary"
         >
           {product?.title}
         </Link>
@@ -71,18 +71,18 @@ const Product = ({ productCategory, product }) => {
           </p>
         </div> */}
 
-        <div>
+        <div className="text-center">
           {discount > 0 ? (
-            <div className="flex items-center space-x-2">
-              <p className="font-causten-bold text-sm  rounded-md text-red-500 line-through">
+            <div className="flex flex-col items-center space-x-2">
+              <p className="font-causten-bold text-xs md:text-sm  rounded-md text-red-400 line-through">
                 {sellPrice.toFixed(2)} TK
               </p>
-              <p className="font-causten-bold text-sm bg-off-white-light py-2 px-4 rounded-md text-green-500">
+              <p className="font-causten-bold text-xs md:text-sm  p-2 md:py-2 md:px-4 rounded-md text-re">
                 {discountedPrice.toFixed(2)} TK
               </p>
             </div>
           ) : (
-            <p className="font-causten-bold text-sm bg-off-white-light py-2 px-4 rounded-md">
+            <p className="font-causten-bold md:text-sm rounded-md">
               {sellPrice.toFixed(2)} TK
             </p>
           )}

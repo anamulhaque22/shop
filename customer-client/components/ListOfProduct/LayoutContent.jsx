@@ -2,7 +2,6 @@
 import { useProductListQuery } from "@/app/(layout-with-header-footer)/products/queries/products-queries";
 import { useGetCategoryService } from "@/services/api/services/categories";
 import removeDuplicatesFromArrayObjects from "@/services/helpers/remove-duplicates-from-array-of-objects";
-import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Loading from "../Loading/Loading";
@@ -109,7 +108,7 @@ export default function LayoutContent({ productCategory }) {
                 Recommended
               </li>
             </ul> */}
-            <label
+            {/* <label
               htmlFor="product-filter-drawer"
               className="lg:hidden flex gap-2 items-center border px-4 py-2 rounded-lg"
               //   onClick={() => setIsOpen(true)}
@@ -121,7 +120,7 @@ export default function LayoutContent({ productCategory }) {
                 height={18}
                 alt="filter icon"
               />{" "}
-            </label>
+            </label> */}
           </div>
         </div>
         <ListOfProduct productCategory={productCategory} result={result} />

@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import LayoutContent from "./LayoutContent";
-import LayoutLeftSidebar from "./LayoutLeftSidebar";
 
 const ListOfProductPageLayout = ({ productCategory }) => {
   const [isOpen, setIsOpen] = useState(false); // filter container
@@ -15,7 +14,7 @@ const ListOfProductPageLayout = ({ productCategory }) => {
           className="drawer-toggle"
         />
         <LayoutContent productCategory={productCategory} />
-        <LayoutLeftSidebar productCategory={productCategory} />
+        {/* <LayoutLeftSidebar productCategory={productCategory} /> */}
       </div>
     </div>
   );

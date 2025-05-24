@@ -2,6 +2,7 @@
 
 import { useCart } from "@/context/cart/useCart";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { enqueueSnackbar } from "notistack";
 import { useState } from "react";
 import SectionHeading from "../Typography/SectionHeading";
@@ -13,6 +14,7 @@ const ProductsDetails = ({ product }) => {
   const [size, setSize] = useState(product?.sizes?.[0] || null);
   const [color, setColor] = useState(product?.productInfo?.[0] || null);
   const [isValidProduct, setIsValidProduct] = useState(true);
+  const router = useRouter();
 
   const isColorExistOfSize = (sizes) => {
     if (!size) return true;
@@ -70,6 +72,11 @@ const ProductsDetails = ({ product }) => {
       setSize(null);
       setColor(null);
     }
+  };
+
+  const handleBuyNow = () => {
+    handleAddToCart(); // Add the product to the cart
+    router.push("/checkout"); // Navigate to the checkout page
   };
 
   // Calculate discounted price
@@ -191,6 +198,26 @@ const ProductsDetails = ({ product }) => {
             isColorExistOfSize={isColorExistOfSize}
           />
           {/* color end  */}
+
+          <div className="flex flex-col">
+            {discount > 0 ? (
+              <div className="flex flex-col items-start space-y-1">
+                <p className="font-causten-bold text-sm text-red-400">
+                  Regular Price:{" "}
+                  <span className="line-through">
+                    {sellPrice.toFixed(2)} TK{" "}
+                  </span>
+                </p>
+                <p className="font-causten-bold text-sm ">
+                  Special Price: {discountedPrice.toFixed(2)} TK
+                </p>
+              </div>
+            ) : (
+              <p className="font-causten-bold text-sm text-[#3C4242]">
+                Regular Price: {sellPrice.toFixed(2)} TK
+              </p>
+            )}
+          </div>
           <div className="flex gap-6 items-center">
             <button
               onClick={handleAddToCart}
@@ -207,7 +234,22 @@ const ProductsDetails = ({ product }) => {
                 Add to Cart
               </span>
             </button>
-            <div className="flex flex-col">
+
+            <button
+              onClick={handleBuyNow}
+              className="font-causten-semi-bold text-[1.125rem] text-white bg-green-500 flex items-center gap-2 py-3 px-5 lg:px-10 rounded-lg"
+            >
+              <Image
+                src={"/images/icon/white-shopping.svg"}
+                width={15}
+                height={15}
+                alt="cart icon"
+              />
+              <span className="font-causten-semi-bold text-[1.125rem] text-white">
+                Buy Now
+              </span>
+            </button>
+            {/* <div className="flex flex-col">
               {discount > 0 ? (
                 <div className="flex items-center space-x-2">
                   <p className="font-causten-bold text-sm text-red-500 line-through">
@@ -222,7 +264,7 @@ const ProductsDetails = ({ product }) => {
                   {sellPrice.toFixed(2)} TK
                 </p>
               )}
-            </div>
+            </div> */}
           </div>
 
           <div className="hidden divider"></div>
@@ -264,7 +306,7 @@ const ProductsDetails = ({ product }) => {
       </div>
       <div className="mt-10 lg:mt-20">
         <SectionHeading text="Product Description" />
-        <p className="text-[#807D7E] text-base font-causten-regular mt-7">
+        <p className="text-[#807D7E] text-base font-causten-regular mt-7 whitespace-pre-wrap">
           {product?.description}
         </p>
       </div>
